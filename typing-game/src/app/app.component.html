@@ -1,0 +1,25 @@
+<div class="container">
+  <div class="columns is-centered">
+    <div class="box column is-one-third">
+      <h1 class="title has-text-centered">Password Generator</h1>
+
+      <!--      split delete space between words-->
+      <p class="has-text-centered">
+        <span
+          *ngFor="let letter of randomSentence.split(''); let i = index;"
+          [class]="compare(letter, enteredText[i])"
+        >
+          {{letter}}
+        </span>
+      </p>
+
+      <div class="field">
+        <input (input)="onChangeInput($event)" class="input" placeholder="type your text :D"/>
+      </div>
+
+      <div *ngIf="randomSentence === enteredText" class="box has-text-centered">
+        <h1 class="title">You win!</h1>
+      </div>
+    </div>
+  </div>
+</div>
