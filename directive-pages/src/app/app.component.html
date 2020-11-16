@@ -2,16 +2,16 @@
   <nav aria-label="Page navigation example">
     <ul class="pagination">
       <li
-        [ngClass]="{disabled: currentPage === 0}"
+        [appCarousel]="{disabled: currentPage === 0}"
         class="page-item"
       >
         <a (click)="currentPage = currentPage - 1" class="page-link">Previous</a>
       </li>
 
-      <ng-container *ngFor="let image of images; let i = index">
+      <ng-container *appTimes="images.length; let i = index">
         <li
           *ngIf="checkWindowsIndex(i)"
-          [ngClass]="{active: i === currentPage}"
+          [appCarousel]="{active: i === currentPage}"
           class="page-item"
         >
           <a (click)="currentPage = 1" class="page-link">{{i + 1}}</a>
@@ -19,7 +19,7 @@
       </ng-container>
 
       <li
-        [ngClass]="{disabled: currentPage === images.length - 1 }"
+        [appCarousel]="{disabled: currentPage === images.length - 1 }"
         class="page-item"
       >
         <a (click)="currentPage = currentPage + 1" class="page-link">Next
@@ -34,4 +34,7 @@
     <img [alt]="images[currentPage].title" [src]="images[currentPage].url">
   </div>
 
+  <ul *appTimes="5">
+    <li>Hello World!</li>
+  </ul>
 </div>
